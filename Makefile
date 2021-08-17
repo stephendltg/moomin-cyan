@@ -54,19 +54,16 @@ build-deb:
 build-linux:
 	GOOS=linux GOARCH=amd64 $(GOBUILD) -v -o bin/$(BINARY_NAME)-linux-amd64 .
 
-build-darwin:
-	GOOS=darwin GOARCH=amd64 $(GOBUILD) -v -o bin/$(BINARY_NAME)-darwin-amd64 .
-
 build-rasp:
 	GOOS=linux GOARCH=arm GOARM=5 $(GOBUILD) -v -o bin/$(BINARY_NAME)-rasp .
 
-build-darwin-pkg:
+build-darwin:
 	mkdir -p bin/$(BINARY_NAME).app/Contents/MacOS
 	mkdir -p bin/$(BINARY_NAME).app/Contents/Resources
 	cp assets/Info.plist bin/$(BINARY_NAME).app/Contents/Info.plist
 	cp assets/icon.icns bin/$(BINARY_NAME).app/Contents/Resources
 	GOOS=darwin GOARCH=amd64 $(GOBUILD) -v -o bin/$(BINARY_NAME).app/Contents/MacOS/$(BINARY_NAME) .
-	
+
 build-win:
 	GOOS=windows GOARCH=amd64 $(GOBUILD) -ldflags="-H windowsgui" -v -o bin/$(BINARY_NAME)-win32-amd64.exe .
 
@@ -97,6 +94,7 @@ env:
 	@echo Deno version: ${DENO}
 
 help:
+	@echo "echo package env"
 	@echo "make: compile packages and dependencies"
 	@echo "make tool: run specified go tool"
 	@echo "make clean: remove object files and cached files"
