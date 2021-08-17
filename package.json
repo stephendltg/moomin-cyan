@@ -1,0 +1,46 @@
+{
+  "name": "moomin",
+  "version": "0.0.1",
+  "description": "My first app",
+  "engines": {
+    "go": "1.16"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "contributors": [
+    "stephen@epyo.eu"
+  ],
+  "scripts": {
+    "prepare": "husky install",
+    "release": "standard-version",
+    "prerelease": "standard-version -- --prerelease",
+    "fix": "standard-version -- --release-as minor"
+  },
+  "bin": {
+    "webview": "cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephendltg/go-webview.git"
+  },
+  "keywords": [
+    "golang",
+    "webview"
+  ],
+  "author": "stephendltg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stephendltg/go-webview/issues"
+  },
+  "homepage": "https://github.com/stephendltg/go-webview#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "husky": "^7.0.1",
+    "standard-version": "^9.3.1"
+  },
+  "dependencies": {}
+}
