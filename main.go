@@ -16,7 +16,7 @@ var (
 	//go:embed build/*
 	staticFiles embed.FS
 	title       = "moomin"
-	debug       = flag.Bool("debug", true, "Mode debug")
+	debug       = flag.Bool("debug", false, "Mode debug")
 	height      = flag.Int("height", 600, "Webview height")
 	width       = flag.Int("width", 800, "Webview width")
 )
