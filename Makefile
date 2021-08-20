@@ -14,7 +14,7 @@ VERSION := $(shell node -p "require('./package.json').version")
 DESCRIPTION := $(shell node -p "require('./package.json').description")
 HOMEPAGE := $(shell node -p "require('./package.json').homepage")
 AUTHOR=stephendltg
-NODE=v14.16.1
+NODE=v14.17.5
 NVM=v0.38.0
 DENO=1.13.0
 
