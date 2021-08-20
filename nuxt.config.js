@@ -1,12 +1,23 @@
+const pkg = require('./package.json')
+const capitalize = (s) => s[0].toUpperCase() + s.substr(1)
+
 export default {
   target: 'static',
-  buildDir: 'dist',
   router: {
     base: '/dist/'
   },
+  env: {
+    dev: process.env.NODE_ENV !== 'production',
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    title: pkg.name.replace('-', ' '),
+    debug: '*'
+  },
+  generate: {
+    dir: 'dist'
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'moomin',
+    title: capitalize(pkg.name).replace('-', ' '),
     htmlAttrs: {
       lang: 'en'
     },
