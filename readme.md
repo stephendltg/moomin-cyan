@@ -27,13 +27,13 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 ## REFS:
 
-__nuxt/module:__ https://modules.nuxtjs.org/
-__nuxt/http:__ https://http.nuxtjs.org/
-__nuxt/pwa:__ https://pwa.nuxtjs.org/
-__nuxt/device:__ https://github.com/nuxt-community/device-module
-__@stephendltg/e-bus__ : https://www.npmjs.com/package/@stephendltg/e-bus
-__nuxt-vuex-localstorage__: https://www.npmjs.com/package/nuxt-vuex-localstorage
-__Vue i18n:__ https://kazupon.github.io/vue-i18n/
+- __nuxt/module:__ https://modules.nuxtjs.org/
+- __nuxt/http:__ https://http.nuxtjs.org/
+- __nuxt/pwa:__ https://pwa.nuxtjs.org/
+- __nuxt/device:__ https://github.com/nuxt-community/device-module
+- __@stephendltg/e-bus__ : https://www.npmjs.com/package/@stephendltg/e-bus
+- __nuxt-vuex-localstorage__: https://www.npmjs.com/package/nuxt-vuex-localstorage
+- __Vue i18n:__ https://kazupon.github.io/vue-i18n/
 
 ## INSTALL AND REMOVE DEB
 
