@@ -13,7 +13,7 @@ import (
 
 // Vars cli
 var (
-	//go:embed build/*
+	//go:embed dist/*
 	staticFiles embed.FS
 	title       = "moomin"
 	debug       = flag.Bool("debug", false, "Mode debug")
@@ -87,6 +87,6 @@ func main() {
 
 	port, listener := getport()
 	go fileServer(listener)
-	url := fmt.Sprintf("http://localhost:%d/build", port)
+	url := fmt.Sprintf("http://localhost:%d/dist", port)
 	runWebview(url, title, *width, *height, *debug)
 }
