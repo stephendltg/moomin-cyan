@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "description": "My first app",
   "engines": {
+    "node": ">=14.17.0 <16.3.0",
+    "npm": "~6.14.11",
     "go": "1.16"
   },
   "os": [
@@ -25,14 +27,12 @@
     "prepare": "husky install",
     "release": "standard-version",
     "prerelease": "standard-version -- --prerelease",
-    "fix": "standard-version -- --release-as minor"
-  },
-  "bin": {
-    "webview": "cli.js"
+    "fix": "standard-version -- --release-as minor",
+    "package:update": "npx npm-check-updates -u"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stephendltg/go-webview.git"
+    "url": "git+https://github.com/stephendltg/moomin-cyan.git"
   },
   "keywords": [
     "golang",
@@ -41,9 +41,9 @@
   "author": "stephendltg",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/stephendltg/go-webview/issues"
+    "url": "https://github.com/stephendltg/moomin-cyan/issues"
   },
-  "homepage": "https://github.com/stephendltg/go-webview#readme",
+  "homepage": "https://github.com/stephendltg/moomin-cyan#readme",
   "lint-staged": {
     "*.{js,vue}": "eslint",
     "*.{css,vue}": "stylelint"
