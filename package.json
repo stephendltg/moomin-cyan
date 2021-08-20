@@ -50,7 +50,8 @@
   },
   "dependencies": {
     "core-js": "^3.15.1",
-    "nuxt": "^2.15.7"
+    "nuxt": "^2.15.7",
+     "@stephendltg/e-bus": "^1.0.8",
   },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
