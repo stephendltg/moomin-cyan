@@ -35,7 +35,7 @@ $ npm run start
 # generate static project
 $ npm run generate
 
-# generate static project & build binary
+# generate static project & build binary (Deno required)
 $ npm run builder
 ```
 
