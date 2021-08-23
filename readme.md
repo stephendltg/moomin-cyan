@@ -6,7 +6,18 @@ It uses Cocoa/WebKit on macOS, gtk-webkit2 on Linux and Edge on Windows 10.
 
 Application start webview
 
-## Build Setup
+## Install
+
+Install golang https://golang.org/doc/install
+
+**for linux:**
+
+```
+sudo apt-get install libwebkit2gtk-4.0-dev
+sudo apt-get -y install make
+```
+
+## Build Setup frontend
 
 ```bash
 # install dependencies
@@ -22,6 +33,29 @@ $ npm run start
 # generate static project
 $ npm run generate
 ```
+
+## Build binary app
+
+**linux:**
+
+```bash
+make build-deb
+```
+
+**darwin:**
+
+Modify assets/Info.plist & icon.icns
+
+```bash darwin
+make build-darwin
+```
+
+**window:**
+
+```
+GOOS=windows GOARCH=amd64 $(GOBUILD) -ldflags="-H windowsgui" -v -o bin/$(BINARY_NAME)-win32-amd64.exe .
+```
+
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 
