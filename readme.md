@@ -34,6 +34,8 @@ $ npm run start
 $ npm run generate
 ```
 
+For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
 ## Build binary app
 
 **linux:**
@@ -56,8 +58,7 @@ make build-darwin
 GOOS=windows GOARCH=amd64 $(GOBUILD) -ldflags="-H windowsgui" -v -o bin/$(BINARY_NAME)-win32-amd64.exe .
 ```
 
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+For detailed explanation, check out Makefile.
 
 ## REFS:
 
