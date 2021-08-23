@@ -55,7 +55,7 @@ make build-darwin
 **window:**
 
 ```
-GOOS=windows GOARCH=amd64 $(GOBUILD) -ldflags="-H windowsgui" -v -o bin/$(BINARY_NAME)-win32-amd64.exe .
+GOOS=windows GOARCH=amd64 go build -ldflags="-H windowsgui" -v -o bin/moomin-win32-amd64.exe .
 ```
 
 For detailed explanation, check out Makefile.
