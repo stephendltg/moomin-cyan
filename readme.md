@@ -1,5 +1,7 @@
 # MOOMIN
 
+Build cross-platform desktop apps with Nuxtjs. Low ram usage and binary size optimize.
+
 It uses Cocoa/WebKit on macOS, gtk-webkit2 on Linux and Edge on Windows 10.
 
 ## Description
