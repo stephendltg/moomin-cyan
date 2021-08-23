@@ -31,7 +31,7 @@
     "package:update": "npx npm-check-updates -u",
     "builder": "npm run generate && deno run --allow-all --unstable mod.ts",
     "deno": "deno run --allow-all --unstable --watch mod.ts",
-    "deno:tools": "deno info && deno fmt hugo.ts && deno lint mod.ts"
+    "deno:tools": "deno info && deno fmt mod.ts && deno lint mod.ts"
   },
   "repository": {
     "type": "git",

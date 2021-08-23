@@ -1,9 +1,9 @@
 #!/usr/bin/env deno run --allow-env --allow-run --allow-read --allow-write
 
 import * as log from "https://deno.land/std@0.104.0/log/mod.ts";
-import { ensureDir, copy } from "https://deno.land/std@0.104.0/fs/mod.ts";
+import { copy, ensureDir } from "https://deno.land/std@0.104.0/fs/mod.ts";
 
-const data = JSON.parse(Deno.readTextFileSync('./package.json'));
+const data = JSON.parse(Deno.readTextFileSync("./package.json"));
 
 const template = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -32,18 +32,37 @@ const template = `<?xml version="1.0" encoding="UTF-8"?>
 </plist>
 `;
 
-
 var args;
 
 if (Deno.build.os === "windows") {
-  args = ["go", "build", '-ldflags="-H windowsgui"', "-v", "-o", "bin/moomin-win32-amd64.exe"];
+  args = [
+    "go",
+    "build",
+    '-ldflags="-H windowsgui"',
+    "-v",
+    "-o",
+    `bin/${data.name}-win32-amd64.exe`,
+  ];
 } else if (Deno.build.os === "darwin") {
   // Prepare package
   await ensureDir(`./bin/${data.name}.app/Contents/MacOS`);
   await ensureDir(`./bin/${data.name}.app/Contents/Resources`);
-  await copy("./assets/icon.icns", `./bin/${data.name}.app/Contents/Resources/icon.icns`, { overwrite: true });
-  await Deno.writeTextFile(`./bin/${data.name}.app/Contents/Info.plist`, template);
-  args = ["go", "build", "-v", "-o", `bin/${data.name}.app/Contents/MacOS/${data.name}`];
+  await copy(
+    "./assets/icon.icns",
+    `./bin/${data.name}.app/Contents/Resources/icon.icns`,
+    { overwrite: true },
+  );
+  await Deno.writeTextFile(
+    `./bin/${data.name}.app/Contents/Info.plist`,
+    template,
+  );
+  args = [
+    "go",
+    "build",
+    "-v",
+    "-o",
+    `bin/${data.name}.app/Contents/MacOS/${data.name}`,
+  ];
 } else if (Deno.build.os === "linux") {
   args = ["make", "build-deb"];
 } else {
