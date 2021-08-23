@@ -34,11 +34,14 @@ $ npm run start
 
 # generate static project
 $ npm run generate
+
+# generate static project & build binary
+$ npm run builder
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 
-## Build binary app
+## Build binary app (manual)
 
 **linux:**
 
