@@ -8,6 +8,7 @@ import (
   "path/filepath"
   "text/template"
   "os/exec"
+  "os"
   "strings"
   "bytes"
 )
@@ -60,7 +61,7 @@ func spawn(command string, passthroughArgs bool) {
   
 	var out bytes.Buffer
 	var stderr bytes.Buffer
-	exe.Stdout = &out
+	cmd.Stdout = &out
 	cmd.Stderr = &stderr
   
   err := cmd.Run()
@@ -98,11 +99,11 @@ func main() {
   // Read package.json
   data := readPackage()
                                  
-  fmt.Println("Data name: " + data.name)
+  fmt.Println(data)
   
   fmt.Println( os.Args[1:] )
   
-  err = os.MkdirAll(filepath.Join(abspath(), "testing/test"), 0755)
+  err := os.MkdirAll(filepath.Join(abspath(), "testing/test"), 0755)
   if err != nil { panic(err) }
   
   parse("test.txt", templateDeb, data)
