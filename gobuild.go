@@ -33,7 +33,7 @@ func abspath() string {
 }
 
 // Parse template
-func parse(path string, tmpl string) {
+func parse(path string, tmpl string, data Data) {
   t, err := template.New("tmpl").Parse(tmpl)
   if err != nil { panic(err) }
 
@@ -103,7 +103,7 @@ func main() {
   err = os.MkdirAll(filepath.Join(abspath(), "testing/test"), 0755)
   if err != nil { panic(err) }
   
-  parse("test.txt", templateDeb)
+  parse("test.txt", templateDeb, data)
   
   spawn("go version", false)
 
