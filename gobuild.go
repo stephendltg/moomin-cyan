@@ -56,7 +56,8 @@ func spawn(cmd string) {
 	var stderr bytes.Buffer
 	cmd.Stdout = &out
 	cmd.Stderr = &stderr
-	cmd.Run()
+  err := cmd.Run()
+  if err != nil { panic(err) }
 	fmt.Printf("Result: %v / %v", out.String(), stderr.String())
 }
 
@@ -93,19 +94,7 @@ func main() {
 	}
   
   /*
-  parts := strings.Split(`pushnotify.exe --to=gqukgkJyLtchaLE41WUEJ2qFM7Q3tb --title=New Plex content --message={showname} season {showseasonnumber} episode {showepisodenumber} just landed on Plex --sound=magic`, " -")
-	head := parts[0]
-	args := parts[1:len(parts)]
-	//	Format the command
-	cmd := exec.Command(head, args...)
-	//	Sanity check -- capture stdout and stderr:
-	var out bytes.Buffer
-	var stderr bytes.Buffer
-	cmd.Stdout = &out
-	cmd.Stderr = &stderr
-	//	Run the command
-	cmd.Run()
-	//	Output our results
-	fmt.Printf("Result: %v / %v", out.String(), stderr.String())
+  spawn(`pushnotify.exe --to=gqukgkJyLtchaLE41WUEJ2qFM7Q3tb --title=New Plex content --message={showname} season {showseasonnumber} episode {showepisodenumber} just landed on Plex --sound=magic`, " -")
+	
   */
 }
