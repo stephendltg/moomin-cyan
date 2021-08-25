@@ -68,8 +68,7 @@ func spawn(cmd string, passthroughArgs bool) {
 }
 
 // copy file
-func copy(source string, destination string) {
-  
+func copy(source string, destination string) {  
   input, err := ioutil.ReadFile(source)
   if err != nil { panic(err) }
 
