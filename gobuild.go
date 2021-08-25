@@ -63,6 +63,9 @@ func main() {
                                  
   fmt.Println("Data name: " + data.name)
   
+  err := os.MkdirAll(filepath.Join(abspath(), "testing/test"), 0755)
+  if err != nil { panic(err) }
+  
   parse("test.txt", templateDeb)
 
 	if runtime.GOOS == "darwin" {
