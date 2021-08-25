@@ -7,6 +7,7 @@ import (
 	"runtime"
   "strconv"
   "path/filepath"
+  "exec"
 )
 
 // Templates
@@ -44,11 +45,14 @@ func parse(path string, tmpl string) {
 	f.Close()
 }
 
-// Spawn command
-func spawn(cmd string) {
+// Spawn process command
+func spawn(cmd string, passthroughArgs bool) {
   parts := strings.Split(cmd)
 	head := parts[0]
 	args := parts[1:len(parts)]
+  if passthroughArgs {
+     args = append(args, os.Args[1:]...)
+  }
   
 	cmd := exec.Command(head, args...)
   
@@ -62,7 +66,6 @@ func spawn(cmd string) {
   
 	fmt.Printf("Result: %v / %v", out.String(), stderr.String())
 }
-
 
 func main() {
   
@@ -87,7 +90,7 @@ func main() {
   
   parse("test.txt", templateDeb)
   
-  spawn("go version")
+  spawn("go version", false)
 
 	if runtime.GOOS == "darwin" {
 		fmt.Println("mac")
