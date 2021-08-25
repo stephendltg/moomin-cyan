@@ -63,6 +63,8 @@ func main() {
                                  
   fmt.Println("Data name: " + data.name)
   
+  fmt.Println( os.Args[1:] )
+  
   err := os.MkdirAll(filepath.Join(abspath(), "testing/test"), 0755)
   if err != nil { panic(err) }
   
