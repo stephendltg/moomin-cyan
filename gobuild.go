@@ -36,12 +36,14 @@ func main() {
   // Read package.json
   jsonPackage, err := os.Open(filepath.Join(abspath(), "package.json"))
   if err != nil {
-     panic(err)
+    panic(err)
   }
   defer jsonPackage.Close()
   byteValue, _ := ioutil.ReadAll(jsonPackage)
   var data Data
-  json.Unmarshal(byteValue, &data)
+  if err := json.Unmarshal(byteValue, &data); err != nil {
+	 	panic(err)
+	}
                                  
   fmt.Println("Data name: " + data.name)
 
