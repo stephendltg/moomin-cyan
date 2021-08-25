@@ -51,13 +51,17 @@ func spawn(cmd string) {
   parts := strings.Split(cmd)
 	head := parts[0]
 	args := parts[1:len(parts)]
+  
 	cmd := exec.Command(head, args...)
+  
 	var out bytes.Buffer
 	var stderr bytes.Buffer
 	cmd.Stdout = &out
 	cmd.Stderr = &stderr
+  
   err := cmd.Run()
   if err != nil { panic(err) }
+  
 	fmt.Printf("Result: %v / %v", out.String(), stderr.String())
 }
 
