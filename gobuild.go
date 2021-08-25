@@ -67,6 +67,16 @@ func spawn(cmd string, passthroughArgs bool) {
 	fmt.Printf("Result: %v / %v", out.String(), stderr.String())
 }
 
+// copy file
+func copy(source string, destination string) {
+  
+  input, err := ioutil.ReadFile(source)
+  if err != nil { panic(err) }
+
+	err = ioutil.WriteFile(destination, input, 0644)
+  if err != nil { panic(err) }
+}
+
 func main() {
   
   // Read package.json
