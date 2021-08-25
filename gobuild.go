@@ -9,6 +9,9 @@ import (
   "path/filepath"
 )
 
+// Templates
+const templateDeb := "{{.name}} items are made of {{.description}}"
+
 // package json data
 type Data struct {
     Name   string `json:"name"`
@@ -30,6 +33,19 @@ func abspath() string {
 	return dir
 }
 
+// Parse template
+func parse(path string, tmpl string) {
+  t, err := template.New("tmpl").Parse(tmpl)
+  if err != nil { panic(err) }
+
+	f, err := os.Create(path)
+  if err != nil { panic(err) }
+
+	err = t.Execute(f, data)
+  if err != nil { panic(err) }
+	f.Close()
+}
+
 
 func main() {
   
@@ -46,6 +62,8 @@ func main() {
 	}
                                  
   fmt.Println("Data name: " + data.name)
+  
+  parse("test.txt", templateDeb)
 
 	if runtime.GOOS == "darwin" {
 		fmt.Println("mac")
