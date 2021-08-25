@@ -76,9 +76,8 @@ func copy(source string, destination string) {
   if err != nil { panic(err) }
 }
 
-func main() {
-  
-  // Read package.json
+// Read package
+func readPackage() Data {
   jsonPackage, err := os.Open(filepath.Join(abspath(), "package.json"))
   if err != nil {
     panic(err)
@@ -89,6 +88,13 @@ func main() {
   if err = json.Unmarshal(byteValue, &data); err != nil {
 	 	panic(err)
 	}
+  return data
+}
+
+func main() {
+  
+  // Read package.json
+  data := readPackage()
                                  
   fmt.Println("Data name: " + data.name)
   
