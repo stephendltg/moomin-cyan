@@ -37,7 +37,7 @@ func parse(path string, tmpl string) {
   t, err := template.New("tmpl").Parse(tmpl)
   if err != nil { panic(err) }
 
-	f, err := os.Create(path)
+	f, err = os.Create(path)
   if err != nil { panic(err) }
 
 	err = t.Execute(f, data)
@@ -86,7 +86,7 @@ func main() {
   defer jsonPackage.Close()
   byteValue, _ := ioutil.ReadAll(jsonPackage)
   var data Data
-  if err := json.Unmarshal(byteValue, &data); err != nil {
+  if err = json.Unmarshal(byteValue, &data); err != nil {
 	 	panic(err)
 	}
                                  
@@ -94,7 +94,7 @@ func main() {
   
   fmt.Println( os.Args[1:] )
   
-  err := os.MkdirAll(filepath.Join(abspath(), "testing/test"), 0755)
+  err = os.MkdirAll(filepath.Join(abspath(), "testing/test"), 0755)
   if err != nil { panic(err) }
   
   parse("test.txt", templateDeb)
