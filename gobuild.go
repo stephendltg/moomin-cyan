@@ -86,6 +86,8 @@ func main() {
   if err != nil { panic(err) }
   
   parse("test.txt", templateDeb)
+  
+  spawn("go version")
 
 	if runtime.GOOS == "darwin" {
 		fmt.Println("mac")
@@ -95,8 +97,4 @@ func main() {
 		fmt.Println("linux")
 	}
   
-  /*
-  spawn(`pushnotify.exe --to=gqukgkJyLtchaLE41WUEJ2qFM7Q3tb --title=New Plex content --message={showname} season {showseasonnumber} episode {showepisodenumber} just landed on Plex --sound=magic`, " -")
-	
-  */
 }
