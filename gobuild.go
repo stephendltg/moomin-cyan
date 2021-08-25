@@ -22,13 +22,11 @@ type Data struct {
 // Absolu path exec
 func abspath() string {
 	exe, err := os.Executable()
-	if err != nil {
-		panic(err)
-	}
+	if err != nil { panic(err) }
+  
 	exe, err = filepath.EvalSymlinks(exe)
-	if err != nil {
-		panic(err)
-	}
+	if err != nil {	panic(err) }
+
 	dir := filepath.Dir(exe)
 	return dir
 }
