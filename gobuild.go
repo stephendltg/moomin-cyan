@@ -5,13 +5,15 @@ import (
   "io/ioutil"
 	"fmt"
 	"runtime"
-  "strconv"
   "path/filepath"
-  "exec"
+  "text/template"
+  "os/exec"
+  "strings"
+  "bytes"
 )
 
 // Templates
-const templateDeb := "{{.name}} items are made of {{.description}}"
+const templateDeb = "{{.name}} items are made of {{.description}}"
 
 // package json data
 type Data struct {
@@ -37,7 +39,7 @@ func parse(path string, tmpl string, data Data) {
   t, err := template.New("tmpl").Parse(tmpl)
   if err != nil { panic(err) }
 
-	f, err = os.Create(path)
+  f, err := os.Create(path)
   if err != nil { panic(err) }
 
 	err = t.Execute(f, data)
@@ -46,8 +48,8 @@ func parse(path string, tmpl string, data Data) {
 }
 
 // Spawn process command
-func spawn(cmd string, passthroughArgs bool) {
-  parts := strings.Split(cmd)
+func spawn(command string, passthroughArgs bool) {
+  parts := strings.Split(command, " ")
 	head := parts[0]
 	args := parts[1:len(parts)]
   if passthroughArgs {
@@ -58,7 +60,7 @@ func spawn(cmd string, passthroughArgs bool) {
   
 	var out bytes.Buffer
 	var stderr bytes.Buffer
-	cmd.Stdout = &out
+	exe.Stdout = &out
 	cmd.Stderr = &stderr
   
   err := cmd.Run()
