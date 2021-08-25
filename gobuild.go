@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"runtime"
   "strconv"
+  "path/filepath"
 )
 
 // package json data
@@ -15,10 +16,25 @@ type Data struct {
     Version    string    `json:"version"`
 }
 
+// Absolu path exec
+func abspath() string {
+	exe, err := os.Executable()
+	if err != nil {
+		panic(err)
+	}
+	exe, err = filepath.EvalSymlinks(exe)
+	if err != nil {
+		panic(err)
+	}
+	dir := filepath.Dir(exe)
+	return dir
+}
+
+
 func main() {
   
   // Read package.json
-  jsonPackage, err := os.Open("package.json")
+  jsonPackage, err := os.Open(filepath.Join(abspath(), "package.json"))
   if err != nil {
      panic(err)
   }
