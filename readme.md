@@ -35,8 +35,11 @@ $ npm run start
 # generate static project
 $ npm run generate
 
-# generate static project & build binary (Deno required)
+# generate static project & build binary (Golang use)
 $ npm run builder
+
+# generate static project & build binary (Deno required)
+$ npm run builder:deno
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

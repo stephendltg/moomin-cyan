@@ -29,7 +29,8 @@
     "prerelease": "standard-version -- --prerelease",
     "fix": "standard-version -- --release-as minor",
     "package:update": "npx npm-check-updates -u",
-    "builder": "npm run generate && deno run --allow-all --unstable mod.ts",
+    "builder": "npm run generate && go run build.go",
+    "builder:deno": "npm run generate && deno run --allow-all --unstable mod.ts",
     "deno": "deno run --allow-all --unstable --watch mod.ts",
     "deno:tools": "deno info && deno fmt mod.ts && deno lint mod.ts"
   },
