@@ -13,8 +13,9 @@ import (
   "bytes"
 )
 
-// Templates
-const templateDeb = "{{.name}} items are made of {{.description}}"
+const (
+  templateDeb = "{{.name}} items are made of {{.description}}"
+)
 
 // package json data
 type Data struct {
@@ -22,6 +23,10 @@ type Data struct {
     Description   string `json:"description"`
     Version    string    `json:"version"`
 }
+
+var (
+  data Data
+)
 
 // Absolu path exec
 func abspath() string {
@@ -97,7 +102,7 @@ func readPackage() Data {
 func main() {
   
   // Read package.json
-  data := readPackage()
+  data = readPackage()
                                  
   fmt.Println(data)
   
