@@ -19,9 +19,9 @@ const (
 
 // package json data
 type Data struct {
-    Name   string `json:"name"`
-    Description   string `json:"description"`
-    Version    string    `json:"version"`
+    name   string `json:"name"`
+    description   string `json:"description"`
+    version    string    `json:"version"`
 }
 
 var (
