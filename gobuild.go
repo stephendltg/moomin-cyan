@@ -24,10 +24,6 @@ type Data struct {
     version    string    `json:"version"`
 }
 
-var (
-  data Data
-)
-
 // Absolu path exec
 func abspath() string {
 	exe, err := os.Executable()
@@ -102,7 +98,7 @@ func readPackage() Data {
 func main() {
   
   // Read package.json
-  data = readPackage()
+  data := readPackage()
                                  
   fmt.Println(data)
   
