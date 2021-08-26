@@ -42,6 +42,7 @@ if (Deno.build.os === "windows") {
     "-v",
     "-o",
     `bin/${data.name}-win32-amd64.exe`,
+    "main.go",
   ];
 } else if (Deno.build.os === "darwin") {
   // Prepare package
@@ -62,6 +63,7 @@ if (Deno.build.os === "windows") {
     "-v",
     "-o",
     `bin/${data.name}.app/Contents/MacOS/${data.name}`,
+    "main.go"
   ];
 } else if (Deno.build.os === "linux") {
   args = ["make", "build-deb"];
@@ -85,7 +87,7 @@ const { code } = await go.status();
 const rawError = await go.stderrOutput();
 
 if (code === 0) {
-  log.info("go build ...");
+  log.info("✔ Go build your app");
 } else {
   const errorString = new TextDecoder().decode(rawError);
   log.warning(errorString);
