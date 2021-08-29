@@ -46,26 +46,26 @@ build-deb:
 	echo "Maintainer: $(AUTHOR)" >> $(PKG_LINUX)/DEBIAN/control
 	echo "Description: $(DESCRIPTION)" >> $(PKG_LINUX)/DEBIAN/control
 	echo "Homepage: ${HOMEPAGE}" >> $(PKG_LINUX)/DEBIAN/control
-	GOOS=linux $(GOBUILD) -v -o $(PKG_LINUX)/usr/bin/$(BINARY_NAME) main.go
+	GOOS=linux $(GOBUILD) -v -ldflags="-X 'main.Title=${BINARY}'" -o $(PKG_LINUX)/usr/bin/$(BINARY_NAME) main.go
 	sudo dpkg-deb --build $(PKG_LINUX)
 	rm -r $(PKG_LINUX)/*
 	rmdir $(PKG_LINUX)
 
 build-linux:
-	GOOS=linux GOARCH=amd64 $(GOBUILD) -v -o bin/$(BINARY_NAME)-linux-amd64 main.go
+	GOOS=linux GOARCH=amd64 $(GOBUILD) -v -ldflags="-X 'main.Title=${BINARY}'" -o bin/$(BINARY_NAME)-linux-amd64 main.go
 
 build-rasp:
-	GOOS=linux GOARCH=arm GOARM=5 $(GOBUILD) -v -o bin/$(BINARY_NAME)-rasp main.go
+	GOOS=linux GOARCH=arm GOARM=5 $(GOBUILD) -v -ldflags="-X 'main.Title=${BINARY}'" -o bin/$(BINARY_NAME)-rasp main.go
 
 build-darwin:
 	mkdir -p bin/$(BINARY_NAME).app/Contents/MacOS
 	mkdir -p bin/$(BINARY_NAME).app/Contents/Resources
 	cp assets/Info.plist bin/$(BINARY_NAME).app/Contents/Info.plist
 	cp assets/icon.icns bin/$(BINARY_NAME).app/Contents/Resources
-	GOOS=darwin GOARCH=amd64 $(GOBUILD) -v -o bin/$(BINARY_NAME).app/Contents/MacOS/$(BINARY_NAME) main.go
+	GOOS=darwin GOARCH=amd64 $(GOBUILD) -v -ldflags="-X 'main.Title=${BINARY}'" -o bin/$(BINARY_NAME).app/Contents/MacOS/$(BINARY_NAME) main.go
 
 build-win:
-	GOOS=windows GOARCH=amd64 $(GOBUILD) -ldflags="-H windowsgui" -v -o bin/$(BINARY_NAME)-win32-amd64.exe main.go
+	GOOS=windows GOARCH=amd64 $(GOBUILD) -ldflags="-H windowsgui -X 'main.Title=${BINARY}'" -v -o bin/$(BINARY_NAME)-win32-amd64.exe main.go
 
 tool:
 	$(GOVET) ./...; true
