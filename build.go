@@ -178,11 +178,11 @@ func main() {
 		binaryPath = "bin/" + data.Name + ".app/Contents/MacOS/" + data.Name
 		// Build binary
 		spawn(
-			"go build -v -ldflags=\"-X 'main.Title=${BINARY}'\" -o "+binaryPath+" main.go",
+			"go build -v -ldflags=\"-X 'main.Title="+data.Name+"'\" -o "+binaryPath+" main.go",
 			"✔ Go build "+data.Name+".app",
 			false)
 	} else if runtime.GOOS == "window" {
-		binaryPath = "bin/" + data.Name + "-win-amd64.exe -ldflags=\"-H windowsgui -X 'main.Title=${BINARY}'\""
+		binaryPath = "bin/" + data.Name + "-win-amd64.exe -ldflags=\"-H windowsgui -X 'main.Title="+data.Name+"'\""
 		// Build binary
 		spawn(
 			"go build -v -o "+binaryPath+" main.go",
