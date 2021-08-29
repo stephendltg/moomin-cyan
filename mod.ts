@@ -38,7 +38,7 @@ if (Deno.build.os === "windows") {
   args = [
     "go",
     "build",
-    "-ldflags=\"-H windowsgui -X 'main.Title=${BINARY}'\"",
+    `-ldflags="-H windowsgui -X 'main.Title=${data.name}'"`,
     "-v",
     "-o",
     `bin/${data.name}-win32-amd64.exe`,
@@ -61,7 +61,7 @@ if (Deno.build.os === "windows") {
     "go",
     "build",
     "-v",
-    "-ldflags=\"-X 'main.Title=${BINARY}'\"",
+    `-ldflags="-X 'main.Title=${data.name}'"`,
     "-o",
     `bin/${data.name}.app/Contents/MacOS/${data.name}`,
     "main.go"
