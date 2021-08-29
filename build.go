@@ -191,7 +191,7 @@ func main() {
 	} else if runtime.GOOS == "linux" {
 		spawn(
 			"make build-deb",
-			"✔ Go build "+data.Name+".app",
+			"✔ Go build "+data.Name+".deb",
 			false)
 	} else {
 		panic("⚠ Unsupported platform: " + runtime.GOOS)
